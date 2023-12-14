@@ -1,13 +1,22 @@
-.wrapper {
-  background: linear-gradient(to bottom, #131b41, #268cf1, #131b41);
-  color: white;
-}
-
 div {
   border: 1px dotted blue;
 } /* ///////////убрать  */
 
 
+.wrapper {
+  background: linear-gradient(to bottom, #131b41, #268cf1, #131b41);
+  color: white;
+}
+
+main{
+  height: 100vh; 
+}
+
+.row {
+  justify-content: center;
+
+}
+  
 .tytle1,
 .tytle2 {
   padding: 20px 10px 0px 10px;
@@ -23,7 +32,7 @@ div {
   background-color: #66b0f9;
 }
 .container_lang {
-  margin: 40px 0px 20px 0px;
+  margin: 40px 0px 40px 0px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,43 +57,63 @@ div {
   font-weight: 500;
 }
 
-.a5 {
-  padding: 15px;
+
+.balls {
+  display: flex;
+  justify-content:space-around;
+
+
+}
+.container_balls {
+  padding: 30px 0px 30px 0px;
+
+}
+.ball {
+  display: block;
+  width: 60px;
 }
 
+.ball_am3_img {
+  margin-left: 15%;
+}
+.ball_nz2_img {
+  margin-left: 25%;
+}
+.ball_can2_img {
+  margin-left: 35%;
+}
+.ball_nz_img {
+  margin-left: 45%;
+}
 
-.ball_img {
-  display: block;
-  width: 50px;
+.ball_gb2_img {
   margin-left: 85%;
 }
 .ball_au_img {
-  display: block;
-  width: 53px;
-  margin-left: 80%;
-}
-
-.ball_am_img {
-  display: block;
-  width: 53px;
   margin-left: 75%;
 }
-
+.ball_am_img {
+  margin-left: 65%;
+}
 .ball_gb_img {
-  display: block;
-  width: 50px;
-  margin-left: 70%;
+  margin-left: 55%;
+}
+
+
+footer {
+  background: linear-gradient(to bottom, #268cf1, #131b41);
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+   }
+
+.footer_social {
+  text-align: center;
 }
 
 .social_img {
-  width: 30px;
-  height: 30px;
+  width: 20px;
   margin: 10px;
 }
 
-.footer {
-  display: flex;
-  justify-content: center;
-background: linear-gradient(to bottom, #268cf1, #131b41);
-
-}

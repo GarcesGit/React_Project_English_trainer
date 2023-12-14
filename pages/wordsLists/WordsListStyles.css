@@ -1,3 +1,8 @@
+
+div {
+    border: 1px dotted blue;
+  } /* ///////////убрать  */
+  
 .container {
     display: flex; 
     flex-direction: row;
@@ -5,7 +10,15 @@
 }
   
 .paragraph {
-    color: blue;
 }
 .child {
   }
+
+  .btn-primary {
+    height: 40px;
+    border: 2px solid #66b0f9;
+    background-color: #66b0f9;
+  }
+
+
+  
