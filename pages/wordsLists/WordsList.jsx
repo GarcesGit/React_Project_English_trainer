@@ -2,7 +2,6 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import './WordsListStyles.css';
 
-
 function WordsList({ allWords }) {
 
     // const [visible, setVisible] = useState(false);
@@ -13,7 +12,6 @@ function WordsList({ allWords }) {
             <td>{words.translation}</td>
         </tr>;
     });
-
 
     return (
         <div className="wrapper">
@@ -33,7 +31,6 @@ function WordsList({ allWords }) {
                                 {showRows}
                             </tbody>
                         </table>
-
                     </div>
                 </div>
             </main>

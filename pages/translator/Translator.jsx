@@ -17,7 +17,6 @@ import telegram_img from '../../images/telegram.jpg';
 
 function Translator() {
 
-
 	return (
 		<div className="wrapper">
 			<main>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+
+<head>
+  <meta charset='utf-8'>
+  <title>DRAFT</title>
+</head>
+
+<body>
+  <p id="title">ТРЕНАЖЁР ДЛЯ ИЗУЧЕНИЯ 1000 АНГЛИЙСКИХ СЛОВ</p>
+  <input id="initialWord" type="text" value=""></input>
+  <input id="translation" type="text" value="" placeholder="Введите перевод и нажмите Enter"></input>
+  <p id="error"></p>
+  <button id="rotate">Англ &#8596; Рус</button>
+  <button id="buttonAllWords">Все слова</button>
+  <button id="buttonRestWords">Осталось выучить</button>
+  <table id="table"></table>
+
+  <script>
+    let initialWord = document.querySelector('#initialWord');
+    let translation = document.querySelector('#translation');
+    let error = document.querySelector('#error');
+    let buttonRotateObject = document.querySelector('#rotate');
+    let table = document.querySelector('#table');
+    let allWords = {
+      absolute: "абсолютный", accept: "принять", account: "счет", accountant: "бухгалтер", achieve: "достигнуть"
+    };
+    let words = { ...allWords };
+
+    const showWord = (object) => {
+      let keys = Object.keys(object);
+      let initialWordValue = keys[Math.floor(Math.random() * keys.length)];
+      initialWord.value = initialWordValue;
+    }
+    showWord(words);
+
+    const rotateObject = (object) => {
+      let wordsRotated = {};
+      for (let keys in object) {
+        let key = object[keys];
+        let value = keys;
+        wordsRotated[key] = value;
+      }
+      return wordsRotated;
+    }
+
+    const drawTable = (object) => {
+      for (let word in object) {
+        let tr = document.createElement('tr');
+
+        let td1 = document.createElement('td');
+        td1.textContent = word;
+        tr.appendChild(td1);
+
+        let td2 = document.createElement('td');
+        td2.textContent = object[word];
+        tr.appendChild(td2);
+
+        table.appendChild(tr);
+      }
+    }
+
+    const drawAllWords = (object) => {
+      buttonAllWords.addEventListener('click', function draw() {
+        table.innerHTML = '';
+        drawTable(allWords);
+      })
+    }
+    drawAllWords(allWords);
+
+    const drawRestWords = (object) => {
+      buttonRestWords.addEventListener('click', function draw() {
+        table.innerHTML = '';
+        drawTable(words);
+      })
+    }
+    drawRestWords(words);
+
+    const translateWords = (currentObject) => {
+      buttonRotateObject.addEventListener('click', function () {
+        if (currentObject == words) {
+          currentObject = rotateObject(words);
+        } else {
+          currentObject = words;
+        }
+        let keys = Object.keys(currentObject);
+        initialWordValue = keys[Math.floor(Math.random() * keys.length)];
+        initialWord.value = initialWordValue;
+        translation.value = '';
+        error.textContent = '';
+      })
+
+      translation.addEventListener('keypress', function () {
+        if (event.key == 'Enter') {
+          let initialWordValue = initialWord.value;
+          let translationValue = translation.value;
+          for (let word in currentObject) {
+            if (initialWordValue === word && translationValue === currentObject[word]) {
+              delete currentObject[word];
+              error.textContent = 'Отлично! Следующее слово.';
+              translation.value = '';
+              showWord(currentObject);
+              break;
+            } else {
+              error.textContent = 'Попробуйте еще раз';
+              translation.value = '';
+            }
+          }
+          sayAllLearned(currentObject);
+        }
+      })
+    }
+    translateWords(words);
+
+    const sayAllLearned = (currentObject) => {
+      let keys = Object.keys(currentObject);
+      if (keys.length === 0) {
+        initialWord.value = '';
+        error.textContent = 'Поздравляем! Вы выучили все слова!';
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -17,16 +17,17 @@ function App() {
 		{ id: id(), initialWord: 'achieve', translation: 'достигнуть' }
 	];
 
+	// let allWords = {
+	// 	absolute: "абсолютный", accept: "принять", account: "счет", accountant: "бухгалтер", achieve: "достигнуть"
+	//   };
+
 	function id() {
 		return uuid();
 	}
 
-
 	return (
 		<BrowserRouter>
 			<Navbar />
-
-
 			<Routes>
 				<Route path='*' element={<Navigate to='/translator' />} />
 				<Route path='/translator' element={<Translator allWords={allWords} />} />

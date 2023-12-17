@@ -3,14 +3,14 @@
   color: white;
 }
 
-main{
-  height: 100vh; 
+main {
+  height: 100vh;
 }
 
 .row {
   justify-content: center;
 }
-  
+
 .title1,
 .title2 {
   padding: 20px 10px 0px 10px;
@@ -43,8 +43,8 @@ main{
   width: 60px;
 }
 
-.initialWord, 
-.translation, 
+.initialWord,
+.translation,
 .initialWord:disabled,
 .translation:focus {
   margin: 5px;
@@ -69,6 +69,7 @@ main{
   justify-content: space-around;
 
 }
+
 .ball {
   width: 60px;
   height: 60px;
@@ -84,7 +85,7 @@ main{
 .ball_nz2_img,
 .ball_nz_img,
 .ball_au_img,
-.ball_gb_img  {
+.ball_gb_img {
   margin: 70px 20px 0px 20px;
 }
 
@@ -93,7 +94,7 @@ footer {
   font-size: 12px;
   display: flex;
   justify-content: center;
-   }
+}
 
 .footer_social {
   text-align: center;
