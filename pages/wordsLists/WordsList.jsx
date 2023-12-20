@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import './WordsListStyles.css';
 
-
 function WordsList({ allWords }) {
 
-    // const [visible, setVisible] = useState(false);
+    const [isVisible, setIsVisible] = useState(false);
 
     const showRows = allWords.map((words) => {
         return <tr key={words.id}>
@@ -14,29 +13,26 @@ function WordsList({ allWords }) {
         </tr>;
     });
 
-
     return (
         <div className="wrapper">
-            <main>
                 <div className="container-fluid lists">
                     <div className="lists_buttons">
                         <Button variant='primary buttonAllWords' 
-                        // onClick={()=> setVisible(true)} 
+                        onClick={()=> setIsVisible((state) => !state)} 
                         >
                             Все слова
                         </Button>
                         <Button variant='primary buttonRestWords'>Осталось выучить</Button>
                     </div>
                     <div className="tables">
-                        <table className="table">
+                        <table className="table"> 
+                        {/* переделать в flexbox ////////////*/}
                             <tbody>
-                                {showRows}
+                                {isVisible ? showRows : null}
                             </tbody>
                         </table>
-
                     </div>
                 </div>
-            </main>
         </div>
 
     );

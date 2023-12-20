@@ -6,32 +6,24 @@ import './App.css';
 import Translator from "./pages/translator/Translator";
 import WordsList from "./pages/wordsLists/WordsList";
 import Navbar from './components/navbar/Navbar.jsx';
+import Footer from './components/footer/Footer.jsx';
+import words from './API/words.json'
+
+const allWords = words.map(word => ({ ...word, id: uuid() }));
 
 function App() {
-
-	const allWords = [
-		{ id: id(), initialWord: 'absolute', translation: 'абсолютный' },
-		{ id: id(), initialWord: 'accept', translation: 'принять' },
-		{ id: id(), initialWord: 'account', translation: 'счет' },
-		{ id: id(), initialWord: 'accountant', translation: 'бухгалтер' },
-		{ id: id(), initialWord: 'achieve', translation: 'достигнуть' }
-	];
-
-	function id() {
-		return uuid();
-	}
-
 
 	return (
 		<BrowserRouter>
 			<Navbar />
-
-
-			<Routes>
-				<Route path='*' element={<Navigate to='/translator' />} />
-				<Route path='/translator' element={<Translator allWords={allWords} />} />
-				<Route path='/wordsLists' element={<WordsList allWords={allWords} />} />
-			</Routes>
+			<main>
+				<Routes>
+					<Route path='*' element={<Navigate to='/translator' />} />
+					<Route path='/translator' element={<Translator allWords={allWords} />} />
+					<Route path='/wordsLists' element={<WordsList allWords={allWords} />} />
+				</Routes>
+			</main>
+			<Footer />
 		</BrowserRouter>
 	);
 }

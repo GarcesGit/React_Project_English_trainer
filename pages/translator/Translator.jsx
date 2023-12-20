@@ -11,16 +11,11 @@ import ball_gb2_img from '../../images/ball_gb2.png';
 import ball_am_img from '../../images/ball_am.png';
 import ball_au_img from '../../images/ball_au.png';
 import ball_gb_img from '../../images/ball_gb.png';
-import github_img from '../../images/github.jpg';
-import web_img from '../../images/web.png';
-import telegram_img from '../../images/telegram.jpg';
 
 function Translator() {
 
-
 	return (
 		<div className="wrapper">
-			<main>
 				<div className="container-fluid">
 					<div className="row">
 						<div className="title1">
@@ -55,21 +50,6 @@ function Translator() {
 						</div>
 					</div>
 				</div>
-			</main>
-			<footer>
-				<div className="footer_social">
-					<a href="https://github.com/GarcesGit">
-						<img src={github_img} alt="" className="social_img" />
-					</a>
-					<a href="#">
-						<img src={web_img} alt="" className="social_img" />
-					</a>
-					<a href="https://t.me/NatashKosh">
-						<img src={telegram_img} alt="" className="social_img" />
-					</a>
-					<p>Natalya Koshukova &copy; 2023</p>
-				</div>
-			</footer>
 		</div>
 	);
 }
