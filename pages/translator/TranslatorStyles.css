@@ -84,4 +84,23 @@
 .ball_au_img,
 .ball_gb_img {
   margin: 70px 20px 0px 20px;
+<<<<<<< HEAD
+=======
+}
+
+footer {
+  background: linear-gradient(to bottom, #268cf1, #131b41);
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+}
+
+.footer_social {
+  text-align: center;
+}
+
+.social_img {
+  width: 20px;
+  margin: 10px;
+>>>>>>> e79b5fe656f177b4f0faa5c4bbdfb00be497c3e8
 }
