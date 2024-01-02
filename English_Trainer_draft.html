@@ -27,12 +27,12 @@
     };
     let words = { ...allWords };
 
-    const showWord = (object) => {
-      let keys = Object.keys(object);
-      let initialWordValue = keys[Math.floor(Math.random() * keys.length)];
-      initialWord.value = initialWordValue;
-    }
-    showWord(words);
+    // const showWord = (object) => {
+    //   let keys = Object.keys(object);
+    //   let initialWordValue = keys[Math.floor(Math.random() * keys.length)];
+    //   initialWord.value = initialWordValue;
+    // }
+    // showWord(words);
 
     const rotateObject = (object) => {
       let wordsRotated = {};
@@ -60,13 +60,13 @@
       }
     }
 
-    const drawAllWords = (object) => {
-      buttonAllWords.addEventListener('click', function draw() {
-        table.innerHTML = '';
-        drawTable(allWords);
-      })
-    }
-    drawAllWords(allWords);
+    // const drawAllWords = (object) => {
+    //   buttonAllWords.addEventListener('click', function draw() {
+    //     table.innerHTML = '';
+    //     drawTable(allWords);
+    //   })
+    // }
+    // drawAllWords(allWords);
 
     const drawRestWords = (object) => {
       buttonRestWords.addEventListener('click', function draw() {
@@ -76,19 +76,19 @@
     }
     drawRestWords(words);
 
-    const translateWords = (currentObject) => {
-      buttonRotateObject.addEventListener('click', function () {
-        if (currentObject == words) {
-          currentObject = rotateObject(words);
-        } else {
-          currentObject = words;
-        }
-        let keys = Object.keys(currentObject);
-        initialWordValue = keys[Math.floor(Math.random() * keys.length)];
-        initialWord.value = initialWordValue;
-        translation.value = '';
-        error.textContent = '';
-      })
+    // const translateWords = (currentObject) => {
+    //   buttonRotateObject.addEventListener('click', function () {
+    //     if (currentObject == words) {
+    //       currentObject = rotateObject(words);
+    //     } else {
+    //       currentObject = words;
+    //     }
+    //     let keys = Object.keys(currentObject);
+    //     initialWordValue = keys[Math.floor(Math.random() * keys.length)];
+    //     initialWord.value = initialWordValue;
+    //     translation.value = '';
+    //     error.textContent = '';
+    //   })
 
       translation.addEventListener('keypress', function () {
         if (event.key == 'Enter') {
@@ -96,7 +96,7 @@
           let translationValue = translation.value;
           for (let word in currentObject) {
             if (initialWordValue === word && translationValue === currentObject[word]) {
-              delete currentObject[word];
+              delete currentObject[word]; //???????????????????????
               error.textContent = 'Отлично! Следующее слово.';
               translation.value = '';
               showWord(currentObject);
@@ -106,7 +106,7 @@
               translation.value = '';
             }
           }
-          sayAllLearned(currentObject);
+          sayAllLearned(currentObject);//???????????????????????
         }
       })
     }
