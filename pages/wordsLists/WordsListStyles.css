@@ -1,20 +1,32 @@
 .lists {
   height: 100vh;
-}
-
-.lists_buttons,
-.tables {
-  display: flex;
   justify-content: center;
 }
 
-.table {
-  width: 500px;
-  margin: 20px;
-  padding: 5px;
-  border: 1px solid #66b0f9;
-  }
+.lists_buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
 
-.table>:not(caption)>*>* {
-  background-color: #66b0f9;
-  }
+.lists_words {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.lists_words ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.lists_words li {
+  margin: 0;
+  padding: 3px 40px;
+  border: 1px solid #66b0f9;
+}
+
+.column_initialWord,
+.column_translation {
+  width: 200px;
+}

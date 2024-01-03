@@ -6,11 +6,11 @@ function WordsList({ allWords }) {
 
     const [isVisible, setIsVisible] = useState(false);
 
-    const showRows = allWords.map((words) => {
-        return <tr key={words.id}>
-            <td>{words.initialWord}</td>
-            <td>{words.translation}</td>
-        </tr>;
+    const showLists = allWords.map((words) => {
+        return <ul key={words.id}>
+            <li className="column_initialWord">{words.initialWord}</li>
+            <li className="column_translation">{words.translation}</li>
+        </ul>;
     });
 
     return (
@@ -24,13 +24,8 @@ function WordsList({ allWords }) {
                         </Button>
                         <Button variant='primary buttonRestWords'>Осталось выучить</Button>
                     </div>
-                    <div className="tables">
-                        <table className="table"> 
-                        {/* переделать в flexbox ////////////*/}
-                            <tbody>
-                                {isVisible ? showRows : null}
-                            </tbody>
-                        </table>
+                    <div className="lists_words">
+                            {isVisible ? showLists : null}
                     </div>
                 </div>
         </div>
