@@ -1,7 +1,7 @@
 [
-    { "initialWord": "absolute", "translation": "абсолютный" },
-    { "initialWord": "accept", "translation": "принять" },
-    { "initialWord": "account", "translation": "счет" },
-    { "initialWord": "accountant", "translation": "бухгалтер" },
-    { "initialWord": "achieve", "translation": "достигнуть" }
+    { "initialWord": "absolute", "translation": "абсолютный", "isLearned": false },
+    { "initialWord": "accept", "translation": "принять", "isLearned": false },
+    { "initialWord": "account", "translation": "счет", "isLearned": false },
+    { "initialWord": "accountant", "translation": "бухгалтер", "isLearned": false },
+    { "initialWord": "achieve", "translation": "достигнуть", "isLearned": false }
 ]

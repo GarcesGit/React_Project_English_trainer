@@ -19,37 +19,57 @@ function Translator({ allWords }) {
 	const [startWord, setStartWord] = useState({});
 	const ref = useRef(null);
 	const [message, setMessage] = useState('');
+	const [isEnglish, setIsEnglish] = useState(true);
+	const [wordIndex, setWordIndex] = useState();
+	const [learnedWordsCounter, setLearnedWordsCounter] = useState();
 
 	const getRandomWord = (arr) => {
+		if (arr.length === learnedWordsCounter) {
+			return;
+		}
 		const randomIndex = Math.floor(Math.random() * arr.length);
+		if (arr[randomIndex].isLearned === true){
+			getRandomWord(allWords);
+
+		}
 		setStartWord(arr[randomIndex]);
+		setWordIndex(randomIndex);
 	}
 
 	useEffect(() => {
 		getRandomWord(allWords);
+		const learnedWords = allWords.filter((word)=> word.isLearned).length;
+		setLearnedWordsCounter(learnedWords);
+
 	}, []);
 
 	const checkTranslation = (event) => {
-		if (event.key === 'Enter') {
-				if (ref.current.value === startWord.translation) {
-					setMessage('Отлично! Следующее слово.');
-					getRandomWord(allWords);
-				} else {
-					setMessage('Попробуйте еще раз.');
-				}
-					ref.current.value = '';
-					
-					// removeEntry(startWord)
-				// console.log(startWord);
-				// console.log(allWords);
+		if (event.key !== 'Enter') {
+			return;
 		}
+
+		if (ref.current.value === startWord.translation) {
+			allWords[wordIndex].isLearned = true;
+			setMessage('Отлично! Следующее слово.');
+			setLearnedWordsCounter((state) => state+1);
+
+			getRandomWord(allWords);
+			ref.current.value = '';
+			return;
+		}
+
+		setMessage('Попробуйте еще раз.');
 	}
 
-// const removeEntry = (entry) => {
-// 	setStartWord(allWords.filter(entries => entries.id !== entry.id))
-// }
 
 //absolute: "абсолютный", accept: "принять", account: "счет", accountant: "бухгалтер", achieve: "достигнуть"
+
+const changeLanguage = () => {
+	console.log('click');
+}
+
+
+
 
 return (
 	<div className="wrapper">
@@ -59,9 +79,17 @@ return (
 					<img src={title_img} alt="" className="title_img" />
 				</div>
 				<div className="a2 container_lang">
-					<img src={button_en_img} alt="" className="lang_img" />
-					<Button variant='primary rotate'>&#8596;</Button>
-					<img src={button_ru_img} alt="" className="lang_img" />
+					<img src={button_en_img} alt="" className="lang_img"
+					// {isEnglish ? null : src={button_ru_img}}
+					/>
+					<Button variant='primary rotate'
+						onClick={() => setIsEnglish((state) => !state)}
+					>&#8596;
+					</Button>
+					<img src={button_ru_img} alt="" className="lang_img"
+					// {isEnglish ? null : src={button_en_img}}
+
+					/>
 				</div>
 				<div className="col-xs-6 col-sm-5 col-md-4 col-xl-3 a3 ">
 					<p name='initialWord' className="form-control initialWord">

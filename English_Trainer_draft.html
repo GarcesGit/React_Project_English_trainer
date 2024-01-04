@@ -44,21 +44,21 @@
       return wordsRotated;
     }
 
-    const drawTable = (object) => {
-      for (let word in object) {
-        let tr = document.createElement('tr');
+    // const drawTable = (object) => {
+    //   for (let word in object) {
+    //     let tr = document.createElement('tr');
 
-        let td1 = document.createElement('td');
-        td1.textContent = word;
-        tr.appendChild(td1);
+    //     let td1 = document.createElement('td');
+    //     td1.textContent = word;
+    //     tr.appendChild(td1);
 
-        let td2 = document.createElement('td');
-        td2.textContent = object[word];
-        tr.appendChild(td2);
+    //     let td2 = document.createElement('td');
+    //     td2.textContent = object[word];
+    //     tr.appendChild(td2);
 
-        table.appendChild(tr);
-      }
-    }
+    //     table.appendChild(tr);
+    //   }
+    // }
 
     // const drawAllWords = (object) => {
     //   buttonAllWords.addEventListener('click', function draw() {
@@ -106,7 +106,7 @@
               translation.value = '';
             }
           }
-          sayAllLearned(currentObject);//???????????????????????
+          sayAllLearned(currentObject);
         }
       })
     }
@@ -119,6 +119,12 @@
         error.textContent = 'Поздравляем! Вы выучили все слова!';
       }
     }
+
+
+    const saveRestWords = (currentObject) => {
+
+    }
+
   </script>
 </body>
 
