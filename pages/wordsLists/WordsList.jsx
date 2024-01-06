@@ -1,10 +1,12 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useEffect} from 'react';
 import { Button } from 'react-bootstrap';
 import './WordsListStyles.css';
 
 function WordsList({ allWords }) {
 
     const [isVisible, setIsVisible] = useState(false);
+    const [restdWords, setRestWords] = useState([]);
+
 
     const showLists = allWords.map((words) => {
         return <ul key={words.id}>
@@ -12,6 +14,12 @@ function WordsList({ allWords }) {
             <li className="column_translation">{words.translation}</li>
         </ul>;
     });
+
+    useEffect(() => {
+		const wordsToLearn = allWords.filter(word => !word.isLearned);
+		setRestWords(wordsToLearn);
+	}, []);
+    // ok?????????????
 
     return (
         <div className="wrapper">
@@ -22,7 +30,10 @@ function WordsList({ allWords }) {
                         >
                             Все слова
                         </Button>
-                        <Button variant='primary buttonRestWords'>Осталось выучить</Button>
+                        <Button variant='primary buttonRestWords'
+
+                        >Осталось выучить
+                        </Button>
                     </div>
                     <div className="lists_words">
                             {isVisible ? showLists : null}
