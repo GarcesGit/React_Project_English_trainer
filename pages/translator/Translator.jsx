@@ -16,29 +16,22 @@ import ball_gb_img from '../../images/ball_gb.png';
 
 function Translator({ allWords }) {
 
-	//проблема в том, что я не обратил внимание, что мы состоянием из useState пользуемся синхронно, а оно обновляется асинхронно. Т.е. новое состояние доступно только при ререндере
+	// absolute: "абсолютный", accept: "принять", account: "счет", accountant: "бухгалтер", achieve: "достигнуть"
+
 
 	const [startWord, setStartWord] = useState({});
 	const [message, setMessage] = useState('');
-	const [finalMessage, setFinalMessage] = useState('');
 	const [isEnglish, setIsEnglish] = useState(true);
-	const [wordIndex, setWordIndex] = useState(-1); //почему -1?????????????
-	const [counter, setCounter] = useState(0);
+	const [wordIndex, setWordIndex] = useState(-1); 
+	const [counter, setCounter] = useState(allWords.filter(word => word.isLearned).length);
 
 	const ref = useRef(null);
 
-	useEffect(() => {
-		const learnedWordsCount = allWords.filter(word => word.isLearned).length;
-		setCounter(learnedWordsCount);
-	}, []);
 
 	useEffect(() => {
 		if (counter === allWords.length) {
 			setStartWord('');
-			setMessage('');
-			setFinalMessage('Поздравляем! Вы выучили все слова!');
-			//как отменить событие по Enter?????????????
-			//Maximum call stack size exceeded RangeError: 
+			setMessage('Поздравляем! Вы выучили все слова!');
 			return;
 		}
 
@@ -69,23 +62,18 @@ function Translator({ allWords }) {
 			return;
 		}
 
-		if (isEnglish) {
-			if (ref.current.value === startWord.translation) {
+		if (isEnglish && ref.current.value === startWord.translation) {
 				handleSuccessWord();
 				return;
 			}
-		}
 
-		if (!isEnglish) {
-			if (ref.current.value === startWord.initialWord) {
+		if (!isEnglish && ref.current.value === startWord.initialWord) {
 				handleSuccessWord();
 				return;
-			}
 		}
 
 		setMessage('Попробуйте еще раз.');
 	}
-// absolute: "абсолютный", accept: "принять", account: "счет", accountant: "бухгалтер", achieve: "достигнуть"
 
 
 	return (
@@ -123,8 +111,7 @@ function Translator({ allWords }) {
 							onKeyDown={checkTranslation}
 						/>
 					</div>
-					<p className="error">{message} {finalMessage}</p> 
-					{/* ok????????????? */}
+					<p className="error">{message}</p> 
 					<div className="col-sm-5 col-md-4 col-xl-3 a6 container_balls">
 						<img src={ball_am3_img} alt="" className="ball ball_am3_img" />
 						<img src={ball_can2_img} alt="" className="ball ball_can2_img" />

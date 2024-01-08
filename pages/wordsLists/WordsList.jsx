@@ -1,44 +1,46 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import './WordsListStyles.css';
 
 function WordsList({ allWords }) {
 
-    const [isVisible, setIsVisible] = useState(false);
-    const [restdWords, setRestWords] = useState([]);
-
-
-    const showLists = allWords.map((words) => {
-        return <ul key={words.id}>
-            <li className="column_initialWord">{words.initialWord}</li>
-            <li className="column_translation">{words.translation}</li>
-        </ul>;
-    });
+    const [allVisible, setAllVisible] = useState(true);
+    const [renderedWords, setRenderedWords] = useState(allWords);
 
     useEffect(() => {
-		const wordsToLearn = allWords.filter(word => !word.isLearned);
-		setRestWords(wordsToLearn);
-	}, []);
-    // ok?????????????
+        if (!allVisible) {
+            setRenderedWords(allWords.filter(words => !words.isLearned));
+            return;
+        }
+        setRenderedWords(allWords);
+    }, [allVisible])
 
     return (
         <div className="wrapper">
-                <div className="container-fluid lists">
-                    <div className="lists_buttons">
-                        <Button variant='primary buttonAllWords' 
-                        onClick={()=> setIsVisible((state) => !state)} 
-                        >
-                            Все слова
-                        </Button>
-                        <Button variant='primary buttonRestWords'
-
-                        >Осталось выучить
-                        </Button>
-                    </div>
-                    <div className="lists_words">
-                            {isVisible ? showLists : null}
-                    </div>
+            <div className="container-fluid lists">
+                <div className="lists_buttons">
+                    <Button variant='primary buttonAllWords'
+                        onClick={() => setAllVisible(true)}
+                    >
+                        Все слова
+                    </Button>
+                    <Button variant='primary buttonRestWords'
+                        onClick={() => setAllVisible(false)}
+                    >
+                        Осталось выучить
+                    </Button>
                 </div>
+                <div className="lists_words">
+                    {renderedWords.map((word) => (
+                        <ul key={word.id}>
+                            <li className="column_initialWord">{word.initialWord}</li>
+                            <li className="column_translation">{word.translation}</li>
+                        </ul>
+
+                    ))}
+
+                </div>
+            </div>
         </div>
 
     );

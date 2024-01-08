@@ -68,13 +68,13 @@
     // }
     // drawAllWords(allWords);
 
-    const drawRestWords = (object) => {
-      buttonRestWords.addEventListener('click', function draw() {
-        table.innerHTML = '';
-        drawTable(words);
-      })
-    }
-    drawRestWords(words);
+    // const drawRestWords = (object) => {
+    //   buttonRestWords.addEventListener('click', function draw() {
+    //     table.innerHTML = '';
+    //     drawTable(words);
+    //   })
+    // }
+    // drawRestWords(words);
 
     // const translateWords = (currentObject) => {
     //   buttonRotateObject.addEventListener('click', function () {
@@ -120,21 +120,22 @@
     //   }
     // }
 
+    const rotatePictures = () => {
 
+    }
+
+
+    //в app
     const saveRestWords = (currentObject) => {
-
-      useEffect(() => { /////////////////////////////
 		const json = localStorage.getItem("tasks");
 		const loadedTasks = JSON.parse(json);
 		if (loadedTasks) {
 			setTasks(loadedTasks);
 		}
-	}, []); //нет массива так как его не изменяем, если будут изменения вставляем зависимость=массив
 
-	useEffect(() => {
+    //функция  в translator
 		const json = JSON.stringify(tasks);
 		localStorage.setItem("tasks", json);
-	}, [tasks]);
 
     }
 
